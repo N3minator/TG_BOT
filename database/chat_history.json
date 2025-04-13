@@ -1,0 +1,282 @@
+[
+  {
+    "user_id": 1015591866,
+    "username": "trevaal",
+    "full_name": "Treval)(",
+    "timestamp": "2025-04-05T22:17:47.148444",
+    "message_type": "text",
+    "content": "."
+  },
+  {
+    "user_id": "5742749531",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T22:28:14.106492",
+    "message_type": "text",
+    "content": "Тест"
+  },
+  {
+    "user_id": "5742749531",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T22:30:43.288822",
+    "message_type": "text",
+    "content": "Тест"
+  },
+  {
+    "user_id": "5742749531",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T23:34:13.073217",
+    "message_type": "photo",
+    "content": "[Фото от администратора]"
+  },
+  {
+    "user_id": "764162425",
+    "sender_id": "764162425",
+    "sender_name": "Lexus",
+    "timestamp": "2025-04-05T23:45:32.062856",
+    "message_type": "text",
+    "content": "Салам"
+  },
+  {
+    "user_id": "764162425",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T23:45:32.308838",
+    "message_type": "text",
+    "content": "Ваше сообщение получено. Мы скоро с вами свяжемся!"
+  },
+  {
+    "user_id": "764162425",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T23:46:24.895474",
+    "message_type": "photo",
+    "content": "[Фото от администратора]"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "8038658534",
+    "sender_name": "Олена",
+    "timestamp": "2025-04-05T23:49:04.415651",
+    "message_type": "text",
+    "content": "Ку"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T23:49:04.623101",
+    "message_type": "text",
+    "content": "Ваше сообщение получено. Мы скоро с вами свяжемся!"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T23:49:26.456861",
+    "message_type": "photo",
+    "content": "[Фото от администратора]"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T23:51:35.170492",
+    "message_type": "photo",
+    "content": "[Фото от администратора]"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T23:54:08.882553",
+    "message_type": "photo",
+    "content": "[ку]"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T23:54:21.367508",
+    "message_type": "photo",
+    "content": "[Фото от администратора]"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T23:55:51.299657",
+    "message_type": "photo",
+    "content": "[]"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T23:56:04.783635",
+    "message_type": "photo",
+    "content": "[]"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T23:56:13.153103",
+    "message_type": "photo",
+    "content": "[ку]"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T23:58:10.563828",
+    "message_type": "photo",
+    "content": "[ку]"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-05T23:58:25.548591",
+    "message_type": "photo",
+    "content": "[]"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-06T00:03:36.158191",
+    "message_type": "video",
+    "content": "[]"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-06T00:03:49.412793",
+    "message_type": "video",
+    "content": "[Ха-ха]"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "8038658534",
+    "sender_name": "Олена",
+    "timestamp": "2025-04-06T00:06:01.797169",
+    "message_type": "text",
+    "content": "Ну"
+  },
+  {
+    "user_id": "8038658534",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-06T00:06:02.009049",
+    "message_type": "text",
+    "content": "Ваше сообщение получено. Мы скоро с вами свяжемся!"
+  },
+  {
+    "user_id": "1603161936",
+    "sender_id": "1603161936",
+    "sender_name": "Міхалич",
+    "timestamp": "2025-04-07T07:19:06.245945",
+    "message_type": "text",
+    "content": "И чё"
+  },
+  {
+    "user_id": "1603161936",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-07T07:19:06.484221",
+    "message_type": "text",
+    "content": "Ваше сообщение получено. Мы скоро с вами свяжемся!"
+  },
+  {
+    "user_id": "1603161936",
+    "sender_id": "1603161936",
+    "sender_name": "Міхалич",
+    "timestamp": "2025-04-07T07:19:21.573582",
+    "message_type": "text",
+    "content": "А?"
+  },
+  {
+    "user_id": "1603161936",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-07T07:19:21.911238",
+    "message_type": "text",
+    "content": "Ваше сообщение получено. Мы скоро с вами свяжемся!"
+  },
+  {
+    "user_id": "1603161936",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-07T07:19:58.556158",
+    "message_type": "video",
+    "content": "[Это я тебя вчера видела 👉👈🫣]"
+  },
+  {
+    "user_id": "1603161936",
+    "sender_id": "1603161936",
+    "sender_name": "Міхалич",
+    "timestamp": "2025-04-07T07:20:10.611563",
+    "message_type": "text",
+    "content": "Нет"
+  },
+  {
+    "user_id": "1603161936",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-07T07:20:10.834259",
+    "message_type": "text",
+    "content": "Ваше сообщение получено. Мы скоро с вами свяжемся!"
+  },
+  {
+    "user_id": "1603161936",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-07T07:20:25.212958",
+    "message_type": "text",
+    "content": "Нет! Это точно был ты"
+  },
+  {
+    "user_id": "1603161936",
+    "sender_id": "1603161936",
+    "sender_name": "Міхалич",
+    "timestamp": "2025-04-07T07:20:38.696972",
+    "message_type": "text",
+    "content": "Нет"
+  },
+  {
+    "user_id": "1603161936",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-07T07:20:38.914204",
+    "message_type": "text",
+    "content": "Ваше сообщение получено. Мы скоро с вами свяжемся!"
+  },
+  {
+    "user_id": "1603161936",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-07T07:22:15.745003",
+    "message_type": "text",
+    "content": "А ты не подумал что через меня может говорить человек, по имени Виталик? -_-"
+  },
+  {
+    "user_id": "1603161936",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-07T07:22:47.436273",
+    "message_type": "text",
+    "content": "Это я через неё пишу 🤣"
+  },
+  {
+    "user_id": "1603161936",
+    "sender_id": "BOT",
+    "sender_name": "BOT",
+    "timestamp": "2025-04-07T07:25:46.561986",
+    "message_type": "text",
+    "content": "Чтобы ты подавился! Приятно аппетита миссье"
+  }
+]

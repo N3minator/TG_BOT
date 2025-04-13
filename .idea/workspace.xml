@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf431c57-2a1c-4e57-8c94-28fcb2958f40" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/start.sh" afterDir="false" />
-    </list>
+    <list default="true" id="bf431c57-2a1c-4e57-8c94-28fcb2958f40" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
