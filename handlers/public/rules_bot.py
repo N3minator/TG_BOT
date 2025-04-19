@@ -1,7 +1,10 @@
+from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, ChatMember
+from telegram.ext import ContextTypes, ConversationHandler, MessageHandler, filters
 import json
 import os
-from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
-from telegram.ext import ContextTypes, ConversationHandler, MessageHandler, filters
+
+from handlers.admin.admin_access import has_access
+from core.check_group_chat import only_group_chats
 
 RULES_DB = "database/rules_db.json"
 MAX_RULES_PAGES = 10
@@ -54,6 +57,7 @@ def generate_rules_keyboard(user_id: int, page: int, total_pages: int) -> Inline
 
 
 # Основной обработчик команды !rules
+@only_group_chats
 async def rules_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     chat_id = str(update.effective_chat.id)
@@ -111,12 +115,16 @@ async def rules_callback_handler(update: Update, context: ContextTypes.DEFAULT_T
 
 
 # === Установка правил через !set-rules ===
+@only_group_chats
 async def set_rules_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat = update.effective_chat
     user = update.effective_user
     member = await context.bot.get_chat_member(chat.id, user.id)
-    if member.status != "creator":
-        await update.message.reply_text("Только владелец группы может устанавливать правила.")
+
+    # Теперь разрешаем не только создателю, но и администраторам с правом !set-rules
+    if not (member.status == ChatMember.OWNER or member.status == "creator"
+            or has_access(chat.id, user.id, "!set-rules")):
+        await update.message.reply_text("⛔ У вас нет прав для установки правил.")
         return ConversationHandler.END
 
     context.user_data['chat_id'] = str(chat.id)
@@ -185,13 +193,16 @@ async def set_rules_cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # === Удаление страницы правил через !del-rules X ===
+@only_group_chats
 async def delete_rules_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat = update.effective_chat
     user = update.effective_user
     member = await context.bot.get_chat_member(chat.id, user.id)
 
-    if member.status != "creator":
-        await update.message.reply_text("Удаление разрешено только владельцу группы.")
+    # Разрешаем владельцу и администраторам с правом !del-rules
+    if not (member.status == ChatMember.OWNER or member.status == "creator"
+            or has_access(chat.id, user.id, "!del-rules")):
+        await update.message.reply_text("⛔ У вас нет прав для удаления правил.")
         return
 
     args = update.message.text.strip().split()
@@ -208,8 +219,9 @@ async def delete_rules_handler(update: Update, context: ContextTypes.DEFAULT_TYP
         await update.message.reply_text("Страница не существует или уже пуста.")
         return
 
-    del rules[page_to_delete - 1]  # Удаление страницы
-    rules_data[chat_id] = rules  # Перезапись
+    # Удаляем страницу и сохраняем
+    del rules[page_to_delete - 1]
+    rules_data[chat_id] = rules
     save_rules(rules_data)
 
     await update.message.reply_text(f"🗑 Страница {page_to_delete} успешно удалена и порядок обновлён.")

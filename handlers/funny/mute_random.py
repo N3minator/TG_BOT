@@ -4,7 +4,7 @@ from telegram import Update, ChatPermissions
 from telegram.ext import ContextTypes
 
 # Настройки
-MUTE_CHANCE = 0.01   # 0.01 = это 1% шанс / 0.1 = 10% шанс / 0.005 = 0.5% шанс
+MUTE_CHANCE = 0.005   # 0.01 = это 1% шанс / 0.1 = 10% шанс / 0.005 = 0.5% шанс
 MUTE_DURATION = 60   # в секундах
 
 

@@ -6,7 +6,9 @@ import random
 from telegram import Update
 from telegram.ext import ContextTypes
 from datetime import datetime
+
 from utils.users import get_user_id_by_username
+from core.check_group_chat import only_group_chats
 
 LOBBY_DB = "database/roulette_lobbies.json"
 SETTINGS_DB = "database/roulette_settings.json"
@@ -65,6 +67,7 @@ async def shootme_forced(chat_id, context, user_id):
 
 
 # === Завершение игры ===
+@only_group_chats
 async def endgame_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message = update.message
     chat_id = str(message.chat_id)
@@ -137,6 +140,7 @@ async def next_turn_or_end(chat_id, context, lobby):
 
 
 # === Ход: выстрел в себя ===
+@only_group_chats
 async def shootme_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message = update.message
     chat_id = str(message.chat_id)
@@ -151,6 +155,7 @@ async def shootme_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # === Ход: выстрел в другого ===
+@only_group_chats
 async def shoot_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message = update.message
     chat_id = str(message.chat_id)
@@ -208,6 +213,7 @@ async def shoot_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # === Хендлер начала игры !roulette ===
+@only_group_chats
 async def roulette_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message = update.message
     chat_id = str(message.chat_id)
@@ -233,6 +239,7 @@ async def roulette_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # === Хендлер подключения к игре !join ===
+@only_group_chats
 async def join_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message = update.message
     chat_id = str(message.chat_id)
@@ -253,6 +260,7 @@ async def join_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # === Хендлер запуска игры !startgame ===
+@only_group_chats
 async def start_game_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message = update.message
     chat_id = str(message.chat_id)

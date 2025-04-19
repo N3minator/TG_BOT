@@ -4,6 +4,7 @@ from telegram.helpers import mention_html
 from telegram.ext import ContextTypes, MessageHandler, CallbackQueryHandler, filters
 
 from handlers.admin.moderation_db import get_all_user_roles, get_all_roles_with_levels
+from core.check_group_chat import only_group_chats
 
 
 # 📌 Получить объект ChatMember или None
@@ -64,6 +65,7 @@ async def build_roles_page(chat_id: int, owner_id: int):
 
 
 # 🧠 Команда !view-admins
+@only_group_chats
 async def view_admins_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message = update.message
     if not message:

@@ -1,10 +1,10 @@
 import logging
 import sys
 from telegram.ext import Application
-from utils.config import TOKEN
+from core.config import TOKEN
 from utils.setup_jobqueue import setup_jobqueue  # заглушка или реальная инициализация
-from handlers.creator_bot.restart_bot import on_bot_start
-from utils.setup_handlers import setup_all_handlers  # всё подключение хэндлеров здесь
+from core.setup_handlers import setup_all_handlers  # всё подключение хэндлеров здесь
+from utils.users import init_db
 
 # Логирование
 logging.basicConfig(
@@ -19,8 +19,8 @@ logging.getLogger("telegram.bot").setLevel(logging.INFO)
 
 # 🚀 post_init: вызывается после запуска — инициализирует очередь и пишет сообщение о перезапуске
 async def post_init(app):
+    init_db()
     await setup_jobqueue(app)
-    await on_bot_start(app)
 
 
 def main():

@@ -1,12 +1,20 @@
-from telegram import Update, ChatMember, User
+from telegram import Update, ChatMember
 from telegram.ext import ContextTypes, MessageHandler, filters
-from handlers.admin.moderation_db import assign_user_to_role, role_exists, init_user_roles_db
+from handlers.admin.moderation_db import (
+    assign_user_to_role, role_exists, init_user_roles_db,
+    get_user_roles, get_role_level, get_user_max_role_level
+)
+from handlers.admin.admin_access import has_access
 from telegram.helpers import mention_html
 import re
+
+from utils.users import get_user_id_by_username
+from core.check_group_chat import only_group_chats
 
 init_user_roles_db()
 
 
+@only_group_chats
 async def grant_admin_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message = update.message
     if not message:
@@ -17,32 +25,75 @@ async def grant_admin_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     try:
         member = await context.bot.get_chat_member(chat.id, user.id)
-        if member.status != ChatMember.OWNER:
-            await message.reply_text("\u26d4 Только владелец группы может выдавать кастомные роли!")
+        is_owner = member.status == ChatMember.OWNER
+        if not is_owner and not has_access(chat.id, user.id, "!grant"):
+            await message.reply_text("⛔ У вас нет доступа к этой команде.")
             return
-    except:
-        await message.reply_text("\u274c Ошибка при проверке прав.")
+    except Exception:
+        await message.reply_text("❌ Ошибка при проверке прав.")
         return
 
-    match = re.match(r"!grant(?: @\w+)? (.+)", message.text.strip())
-    if not message.reply_to_message or not match:
-        await message.reply_text("\u2709\ufe0f Используй: !grant [в ответ на сообщение] <\u0420\u043e\u043b\u044c>")
-        return
+    # Определяем целевого пользователя
+    if message.reply_to_message:
+        target_user = message.reply_to_message.from_user
+        parts = message.text.strip().split(maxsplit=1)
+        if len(parts) < 2:
+            await message.reply_text("✏️ Укажите название роли для выдачи.")
+            return
+        role = parts[1].strip().title()
+    else:
+        parts = message.text.strip().split(maxsplit=2)
+        if len(parts) < 3:
+            await message.reply_text("Использование: !grant <@username или user_id> <Роль>")
+            return
+        target = parts[1].strip()
+        role = parts[2].strip().title()
 
-    role = match.group(1).strip().title()
-    target_user: User = message.reply_to_message.from_user
+        if target.startswith("@"):
+            username = target[1:]
+            target_user_id = get_user_id_by_username(username)
+            if not target_user_id:
+                await message.reply_text("❌ Пользователь не найден.")
+                return
+            try:
+                target_user = (await context.bot.get_chat_member(chat.id, target_user_id)).user
+            except Exception:
+                await message.reply_text("❌ Пользователь не найден в чате.")
+                return
+        elif target.isdigit():
+            try:
+                target_user = (await context.bot.get_chat_member(chat.id, int(target))).user
+            except Exception:
+                await message.reply_text("❌ Пользователь не найден в чате.")
+                return
+        else:
+            await message.reply_text("Неверный формат идентификатора пользователя. Укажите @username или числовой ID.")
+            return
 
     if not role_exists(chat.id, role):
-        await message.reply_text(f"\u274c Роль <b>{role}</b> не существует.", parse_mode="HTML")
+        await message.reply_text(f"❌ Роль <b>{role}</b> не существует!", parse_mode="HTML")
         return
 
-    assign_user_to_role(chat.id, target_user.id, role)
+    # Проверяем, назначена ли уже данная роль у целевого пользователя
+    target_roles = get_user_roles(chat.id, target_user.id)
+    if role in target_roles:
+        await message.reply_text("❌ Данный пользователь уже имеет эту роль.")
+        return
 
+    # Проверка прав на выдачу: если вызывающий не владелец,
+    # его эффективный уровень определяется как минимальный из всех его ролей.
+    my_level = get_user_max_role_level(chat.id, user.id)
+    role_level = get_role_level(chat.id, role)
+    if not is_owner and role_level <= my_level:
+        await message.reply_text("⛔ Вы не можете выдать роль с таким же или более высоким уровнем доступа.")
+        return
+
+    # Выдаем роль: добавляем новую запись в таблицу user_roles
+    assign_user_to_role(chat.id, target_user.id, role)
     await message.reply_html(
-        f"\u2705 Роль <b>{role}</b> успешно выдана пользователю {mention_html(target_user.id, target_user.full_name)}!"
+        f"✅ Роль <b>{role}</b> успешно выдана пользователю {mention_html(target_user.id, target_user.full_name)}!"
     )
 
-
 grant_admin_handler_obj = MessageHandler(
-    filters.TEXT & filters.Regex(r"^!grant"), grant_admin_handler
+    filters.TEXT & filters.Regex(r"^!grant\b"), grant_admin_handler
 )

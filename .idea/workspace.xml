@@ -4,7 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf431c57-2a1c-4e57-8c94-28fcb2958f40" name="Changes" comment="" />
+    <list default="true" id="bf431c57-2a1c-4e57-8c94-28fcb2958f40" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/check_group_chat.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/check_group_chat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/setup_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/setup_handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/admin/admin_access.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin/admin_access.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/admin/ban_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin/ban_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/admin/edit_admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin/edit_admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/admin/edit_role.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/admin/grant.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin/grant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/admin/moderation_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin/moderation_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/admin/new_admin_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin/new_admin_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/admin/remove_role.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin/remove_role.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/admin/revoke_role.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin/revoke_role.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/creator_bot/export_database.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/funny/mute_random.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/funny/mute_random.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/funny/russian_roulette.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/funny/russian_roulette.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/public/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/public/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/public/help_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/public/help_bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/public/prefix.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/public/prefix.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/public/rules_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/public/rules_bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/public/view_admins.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/public/view_admins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/public/welcome_join.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/public/welcome_join.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/utils/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/users.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,18 +69,18 @@
     &quot;Python.бэкап.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Виталик/PycharmProjects/Telegram-Bot/main.py&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Виталик\PycharmProjects\Telegram-Bot\utils" />
-      <recent name="C:\Users\Виталик\PycharmProjects\Telegram-Bot\database" />
+      <recent name="C:\Users\Виталик\PycharmProjects\Telegram-Bot\handlers\public" />
       <recent name="C:\Users\Виталик\PycharmProjects\Telegram-Bot\handlers\funny" />
-      <recent name="C:\Users\Виталик\PycharmProjects\Telegram-Bot\handlers" />
-      <recent name="C:\Users\Виталик\PycharmProjects\Telegram-Bot" />
+      <recent name="C:\Users\Виталик\PycharmProjects\Telegram-Bot\handlers\bot_administrators" />
+      <recent name="C:\Users\Виталик\PycharmProjects\Telegram-Bot\core" />
+      <recent name="C:\Users\Виталик\PycharmProjects\Telegram-Bot\utils" />
     </key>
   </component>
   <component name="RunManager">
@@ -103,7 +129,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/handlers/funny/echo/mute_random.py</url>
+          <url>file://$PROJECT_DIR$/handlers/funny/mute_random.py</url>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
