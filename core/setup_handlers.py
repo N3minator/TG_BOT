@@ -71,6 +71,12 @@ from handlers.funny.russian_roulette import (
     endgame_handler, shoot_handler, shootme_handler
 )
 
+# Register handlers про игру кормёжки Кита
+from handlers.funny.feed_the_pet import (
+    whale_admin_handler, set_whale_name, register_whale, whale_admins_list, set_game_setting,
+    feed_handler, leaders_handler, profile_handler, whale_admin_remove, info_whale
+)
+
 # ========== 4. Импорты команд для Администраторов Бота ==========
 
 # !status — Показать краткую информацию о нагрузке системы
@@ -182,6 +188,18 @@ def setup_all_handlers(app: Application):
     app.add_handler(ban_handler_obj, group=2)
     # Команда !revoke - Снимает кастомную роль с участника
     app.add_handler(revoke_role_handler_obj, group=2)
+
+    # Register handlers про игру кормёжки Кита
+    app.add_handler(MessageHandler(filters.Regex(r'^!set-whale-admin'), whale_admin_handler), group=2)
+    app.add_handler(MessageHandler(filters.Regex(r'^!del-whale-admin'), whale_admin_remove), group=2)
+    app.add_handler(MessageHandler(filters.Regex(r'^!whale-set'), set_game_setting), group=2)
+    app.add_handler(MessageHandler(filters.Regex(r'^!whale-admins'), whale_admins_list), group=2)
+    app.add_handler(MessageHandler(filters.Regex(r'^!whale-name'), set_whale_name), group=2)
+    app.add_handler(MessageHandler(filters.Regex(r'^!whale\b'), register_whale), group=2)
+    app.add_handler(MessageHandler(filters.Regex(r'^!feed'), feed_handler), group=2)
+    app.add_handler(MessageHandler(filters.Regex(r'^!leaders'), leaders_handler), group=2)
+    app.add_handler(MessageHandler(filters.Regex(r'^!profile'), profile_handler), group=2)
+    app.add_handler(MessageHandler(filters.Regex(r'^!info-whale'), info_whale), group=2)
 
     # 3. Callback кнопки
     app.add_handler(CallbackQueryHandler(group_callback_handler, pattern="^group_"), group=3)
