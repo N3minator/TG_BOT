@@ -1,11 +1,12 @@
 from telegram.ext import (
-    MessageHandler, CommandHandler, CallbackQueryHandler, ConversationHandler, Application
+    MessageHandler, CommandHandler, CallbackQueryHandler, ConversationHandler, Application, ChatMemberHandler
 )
 from telegram.ext import filters
 from datetime import datetime
 
 # Импорт хэндлеров
-from handlers.prefix import prefix_handler, register_user
+from utils.users import register_user
+from handlers.prefix import prefix_handler
 from handlers.group import group_handler, group_callback_handler
 from handlers.admin.add_admin import add_admin_handler
 from handlers.admin.list_admins import list_admins_handler
@@ -17,6 +18,7 @@ from handlers.status import status_command, debugall_command
 from handlers.creator_bot.export_database import export_db_conv_handler, export_db_handler_immediate
 from handlers.admin.clear_cmd import clear_cmd_handler_obj, cache_handler_obj
 from handlers.creator_bot.restart_bot import restart_handler
+from handlers.system.register_join_user import on_user_join
 from handlers.rules_bot import (
     rules_handler, rules_callback_handler, set_rules_start,
     set_rules_receive_page, set_rules_receive_text, set_rules_cancel,
@@ -59,8 +61,14 @@ async def register_user_handler(update, context):
 
 
 def setup_all_handlers(app: Application):
+    # Регистрация пользователя если он ввел сообщение
+    app.add_handler(MessageHandler(filters.ALL, register_user_handler), group=0)
+
     # 0. Cache-сборщик сообщений
     app.add_handler(cache_handler_obj, group=0)
+
+    # Обработка регистрации вступления в чат — молчуны
+    app.add_handler(ChatMemberHandler(on_user_join, ChatMemberHandler.CHAT_MEMBER), group=0)
 
     # 1. ConversationHandler (!set-rules)
     set_rules_conv = ConversationHandler(
@@ -119,6 +127,3 @@ def setup_all_handlers(app: Application):
 
     # 7. Прочее в группах
     app.add_handler(MessageHandler(filters.TEXT & ~filters.Regex(r"^!"), mute_random_handler), group=6)
-
-    # 8. Регистрация пользователей (в самом конце)
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.Regex(r"^!"), register_user_handler), group=7)
